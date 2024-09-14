@@ -1,14 +1,23 @@
 import AnswerButton from './AnswerButton';
 import ProgressBar from './ProgressBar';
 import questionData from '../../questions';
+import { useRef } from 'react';
 
 export default function Question({ questionIndex, nextQuestion }) {
+
+    const ref = useRef();
+
+    function answerClickHandler(){
+        ref.current.speedUpTimer();
+    }
+
+
     return (
-        <div className='w-1/2 py-8 px-20 bg-indigo-950 text-center justify-center rounded-xl shadow-3xl'>
-            <ProgressBar nextQuestion={nextQuestion} />
+        <div className='lg:w-1/2 py-8 lg:px-20 px-4 bg-indigo-950 text-center justify-center rounded-xl shadow-3xl'>
+            <ProgressBar nextQuestion={nextQuestion} ref={ref} />
             <p className='mt-4 text-violet-300 text-2xl'>{questionData[questionIndex].text}</p>
             <div className='pt-8 space-y-2'>
-                {questionData[questionIndex].answers.map((item)=><AnswerButton onButtonClick={nextQuestion}>{item}</AnswerButton>)}
+                {questionData[questionIndex].answers.map((item) => <AnswerButton key={item} onButtonClick={answerClickHandler}>{item}</AnswerButton>)}
             </div>
         </div>
     )

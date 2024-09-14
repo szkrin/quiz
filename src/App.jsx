@@ -10,8 +10,7 @@ function App() {
 
     const [content, setContent] = useState('start');
 
-    function nextQuestion() {
-        console.log(questionIndex);
+    function nextQuestionHandler() {
         if (questionIndex > 6) {
             setContent('results');
         } else {
@@ -26,7 +25,7 @@ function App() {
                 <img className='m-auto size-12 ' src={logo} alt='logo' />
                 <h1 className='text-5xl font-bold tracking-widest mt-4 bg-gradient-to-r from-purple-300 to-violet-600 inline-block text-transparent bg-clip-text'>REACTQUIZ</h1>
             </div>
-            {content == 'start' ? <Start onStartClick={nextQuestion} /> : content === 'results' ? <Results /> : <Question questionIndex={content} nextQuestion={nextQuestion} />}
+            {content == 'start' ? <Start onStartClick={nextQuestionHandler} /> : content === 'results' ? <Results /> : <Question questionIndex={content} nextQuestion={nextQuestionHandler} />}
         </main>
     );
 }
