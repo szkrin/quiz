@@ -1,11 +1,15 @@
-export default function Answer() {
+export default function Answer({ index, question, answer, isCorrect }) {
+    let textColor = 'text-green-400';
+    if (!isCorrect) {
+        textColor = 'text-red-400';
+    }
     return (
         <div>
             <div className="mb-3">
-                <span className="bg-black rounded-full text-white px-3 py-2">1</span>
+                <span className="bg-black rounded-full text-white px-3 py-2">{index}</span>
             </div>
-            <div className="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-            <div className="text-green-400">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+            <div className="mb-2">{question}</div>
+            <div className={textColor}>{answer !== '' ? answer : '---------------------------'}</div>
         </div>
     )
 }
