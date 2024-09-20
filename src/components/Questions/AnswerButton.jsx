@@ -1,5 +1,5 @@
 
-export default function AnswerButton({ onButtonClick, children, higlight, correctAnswer }) {
+export default function AnswerButton({ onButtonClick, children, higlight, correctAnswer, disabled, grayOut }) {
 
     let bg = 'bg-sky-400';
     if (higlight) {
@@ -12,6 +12,6 @@ export default function AnswerButton({ onButtonClick, children, higlight, correc
     }
 
     return (
-        <button onClick={onButtonClick} className={`w-full p-4 ${bg} rounded-full text-lg text-indigo-950 font-bold`}>{children}</button>
+        <button disabled={disabled} onClick={onButtonClick} className={`w-full p-4 ${bg} ${grayOut ? 'bg-opacity-70' : ''} rounded-full text-lg text-indigo-950 font-bold`}>{children}</button>
     )
 }

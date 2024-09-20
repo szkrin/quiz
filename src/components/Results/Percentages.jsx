@@ -1,9 +1,14 @@
-export default function Percentages({ answers }) {
+import { useContext } from "react";
+import { questionsContext } from "../../store/questionsContextProvider";
+
+export default function Percentages() {
+
+    const { answers } = useContext(questionsContext);
+
     let skipped = 0;
     let correct = 0;
     let incorrect = 0;
     answers.forEach(element => {
-        console.log(element);
         if (element.answer === '') {
             skipped++;
         } else if (element.isCorrect) {
